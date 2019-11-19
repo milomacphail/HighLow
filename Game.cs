@@ -14,21 +14,16 @@ namespace HighLow
             int playerTwoScore = 0;
 
             Console.WriteLine("{0} of {1}", cardOne.CardValue, cardOne.CardSuit);
-            Console.WriteLine("Guess high or low: ");
+            Console.WriteLine("Guess high(1) or low(0): ");
             string input = Console.ReadLine();
 
-            if (input.ToLower() != "high" || input.ToLower() != "low")
-            {
-                Console.WriteLine("Please guess high or low: ");
-            }
-
-            if (cardOneValue > cardTwoValue && input == "high" || cardOneValue < cardTwoValue && input == "low")
+            if (cardOneValue > cardTwoValue && input == "1" || cardOneValue < cardTwoValue && input == "0")
             {
                 Console.WriteLine("{0} of {1}", cardTwo.CardValue, cardTwo.CardSuit);
                 playerOneScore++;
                 Console.WriteLine("Player One wins with {0} point.", playerOneScore);
             }
-            else if (cardOneValue < cardTwoValue && input == "high" || cardOneValue > cardTwoValue && input == "low")
+            else if (cardOneValue < cardTwoValue && input == "0" || cardOneValue > cardTwoValue && input == "1")
             {
                 Console.WriteLine("{0} of {1}", cardTwo.CardValue, cardTwo.CardSuit);
                 playerTwoScore++;
@@ -37,8 +32,8 @@ namespace HighLow
             else
             {
                 Console.WriteLine("No winners here. Redrawing.");
-                Card newCard = new Card();
-                cardTwo = newCard;
+                cardTwo = new Card();
+                Game drawGame = new Game(cardOne, cardTwo);
             }
         }
     }
