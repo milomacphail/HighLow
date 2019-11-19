@@ -17,19 +17,19 @@ namespace HighLow
             Console.WriteLine("Guess high(1) or low(0): ");
             string input = Console.ReadLine();
 
-            if (cardOneValue > cardTwoValue && input == "1" || cardOneValue < cardTwoValue && input == "0")
+            if (cardOneValue < cardTwoValue && input == "1" || cardOneValue > cardTwoValue && input == "0")
             {
                 Console.WriteLine("{0} of {1}", cardTwo.CardValue, cardTwo.CardSuit);
                 playerOneScore++;
                 Console.WriteLine("Player One wins with {0} point.", playerOneScore);
             }
-            else if (cardOneValue < cardTwoValue && input == "0" || cardOneValue > cardTwoValue && input == "1")
+            else if (cardOneValue > cardTwoValue && input == "0" || cardOneValue < cardTwoValue && input == "1")
             {
                 Console.WriteLine("{0} of {1}", cardTwo.CardValue, cardTwo.CardSuit);
                 playerTwoScore++;
                 Console.WriteLine("Player Two wins with {0} point.", playerTwoScore);
             }
-            else
+            else if (cardOneValue == cardTwoValue && cardOne.CardSuit == cardTwo.CardSuit)
             {
                 Console.WriteLine("No winners here. Redrawing.");
                 cardTwo = new Card();
